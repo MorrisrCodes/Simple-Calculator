@@ -1,5 +1,24 @@
 import tkinter as tk
 
+def clear():
+    enter.delete(0, tk.END)
+
+def submit():
+    if '+' in enter.get():
+        num1, num2 = enter.get().split('+')
+        ans = int(num1) + int(num2)
+    elif '-' in enter.get():
+        num1, num2 = enter.get().split('-')
+        ans = int(num1) - int(num2)
+    elif 'X' in enter.get():
+        num1, num2 = enter.get().split('X')
+        ans = int(num1) * int(num2)
+    elif '/' in enter.get():
+        num1, num2 = enter.get().split('/')
+        ans = int(num1) / int(num2)
+    enter.delete(0, tk.END)
+    enter.insert(0, ans)
+
 cal = tk.Tk()
 
 cal.title('Simple Calculator')
@@ -37,12 +56,11 @@ mulb.grid(row = 2, column = 3)
 divb = tk.Button(cal, text = '/', width=3)
 divb.grid(row = 1, column = 3)
 
-equb = tk.Button(cal, text = '=', width=3)
+equb = tk.Button(cal, text = '=', width=3, command = submit)
 equb.grid(row = 4, column = 2)
-clrb = tk.Button(cal, text = 'C', width=3)
+clrb = tk.Button(cal, text = 'C', width=3, command = clear)
 clrb.grid(row = 4, column = 0)
 
 
 
 cal.mainloop()
-
