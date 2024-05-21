@@ -23,6 +23,16 @@ def type(n):
     enter.insert(tk.END, '')
     enter.insert(tk.END, n)
 
+def func(i):
+    if i == '+':
+        enter.insert(tk.END, ' + ')
+    elif i == '-':
+        enter.insert(tk.END, ' - ')
+    elif i == 'X':
+        enter.insert(tk.END, ' X ')
+    elif i == '/':
+        enter.insert(tk.END, ' / ')
+
 cal = tk.Tk()
 
 cal.title('Simple Calculator')
@@ -51,20 +61,18 @@ num9b.grid(row = 1, column = 2)
 num0b = tk.Button(cal, text = '0', width=3, command = lambda: type(0))
 num0b.grid(row = 4, column = 1)
 
-addb = tk.Button(cal, text = '+', width=3)
+addb = tk.Button(cal, text = '+', width=3, command = lambda: func('+'))
 addb.grid(row = 4, column = 3)
-subb = tk.Button(cal, text = '-', width=3)
+subb = tk.Button(cal, text = '-', width=3, command = lambda: func('-'))
 subb.grid(row = 3, column = 3)
-mulb = tk.Button(cal, text = 'X', width=3)
+mulb = tk.Button(cal, text = 'X', width=3, command = lambda: func('X'))
 mulb.grid(row = 2, column = 3)
-divb = tk.Button(cal, text = '/', width=3)
+divb = tk.Button(cal, text = '/', width=3, command = lambda: func('/'))
 divb.grid(row = 1, column = 3)
 
 equb = tk.Button(cal, text = '=', width=3, command = submit)
 equb.grid(row = 4, column = 2)
 clrb = tk.Button(cal, text = 'c', width=3, command = clear)
 clrb.grid(row = 4, column = 0)
-
-
 
 cal.mainloop()
